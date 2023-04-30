@@ -3,7 +3,8 @@ spring:
     open-in-view: true
     hibernate:
       ddl-auto: create-drop
-    show-sql: false
-
-server:
-  port: 8000
+    show-sql: true
+logging:
+  level:
+      org.springframework.web: DEBUG
+      org.hibernate: DEBUG
