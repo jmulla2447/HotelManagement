@@ -67,7 +67,7 @@ class DefaultHotelService implements HotelService {
     @Override
     public List<Hotel> searchHotels(Long cityId, String sortBy) {
         List<Hotel> hotels = hotelRepository.findByCityId(cityId);
-        if (sortBy != null && sortBy.equalsIgnoreCase("distance")) {//factory
+        if (sortBy != null && sortBy.equalsIgnoreCase("distance")) {//convert into Sortfactory and put logic into it
             hotels = hotels.stream()
                     .map(hotel -> new DistanceHotel(hotel, HaversineDistanceService.calculateDistanceBetween(hotel.getLatitude(),hotel.getLongitude()
                             , hotel.getCity().getCityCentreLatitude(),hotel.getCity().getCityCentreLongitude())))
